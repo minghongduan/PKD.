@@ -164,7 +164,7 @@ python train_TCGA_NSCLC_PKD.py \
   --split_dir ./task_subtyping_nsclc \
   --device 0 --workers 0 \
   --epochs 50 --batch_size 512 --lr 0.0001 --wd -5 \
-  --seed 20 --k 5 --k_start 0 --k_end 5 \
+  --seed 10 --k 5 --k_start 0 --k_end 5 \
   --comment PKD_TCGA_NSCLC
 ```
 
@@ -177,11 +177,9 @@ python train_TCGA_NSCLC_PKD.py \
 | `--lr` | `0.0001` | Initial learning rate. |
 | `--wd` | `-5` | Base-10 exponent of weight decay: the optimizer receives `10 ** wd`, so `--wd -5` means `1e-5`. |
 | `--workers` | `0` | DataLoader worker count. Start with `0` when checking data loading and memory usage. |
-| `--seed` | `10`, or `20` for NSCLC | Random seed reset at the start of each split. It does not change the CSV partitions. |
 | `--k` | `5` | Number of split indices to process when `--k_end` is left at `-1`. |
 | `--k_start` | `-1` | First split index, inclusive. `-1` resolves to `0`. |
 | `--k_end` | `-1` | Last split boundary, exclusive. `-1` resolves to `--k`. |
-| `--comment` | `SeLA_TCGA_WholeSlide_BasedOnSimCLRFeat` | Text included in the timestamped TensorBoard run name. It does not change the checkpoint directory. |
 
 For a single-split run, replace `--k_start 0 --k_end 5` in any example with `--k_start 0 --k_end 1`. For split `2` only, use `--k_start 2 --k_end 3`. Keep `0 <= k_start < k_end <= k` and ensure every requested `splits_<fold>.csv` exists. Retain the task-specific `Feat_*` architecture shown above; the other legacy architecture choices do not initialize the complete PKD training pipeline.
 
