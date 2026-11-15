@@ -70,8 +70,8 @@ Organize the precomputed features in one directory per slide:
 <feature_root>/
   <slide_id>/
     patches.npy
-    patches_label.npy                       # CAMELYON16 and PANDA
-    patches_corresponding_slide_label.npy    # PANDA and TCGA
+    patches_label.npy                       
+    patches_corresponding_slide_label.npy   
 ```
 
 `patches.npy` must contain one 512-dimensional feature vector per patch, with shape `(N, 512)` after any singleton feature axes are squeezed. Feature rows and label rows must refer to the same patches in the same order.
